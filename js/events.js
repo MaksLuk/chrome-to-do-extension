@@ -29,8 +29,14 @@ function add_new_page(new_data_id, page_name, tasks, focus) {
     new_page_button.appendChild(new_page_input);
     tabs.insertBefore(new_page_button, add_new_list_button);
 
-    if (focus) new_page_input.focus();
-    else new_page_input.value = page_name;
+    if (focus) {
+        new_page_input.setAttribute('placeholder', class_elements_placeholders['tab-input']);
+        new_page_input.focus();
+    }
+    else {
+        new_page_input.value = page_name;
+        resize_input(new_page_input, new_page_button);
+    }
     new_page_input.addEventListener('blur', blur_input);
 
     const new_page_section = document.createElement('section');
@@ -354,6 +360,7 @@ async function strike_checkbox(event) {
 }
 
 var class_elements_text = {};
+var class_elements_placeholders = {};
 async function set_locale_texts(current_locale) {
     const response = await fetch(chrome.runtime.getURL('locales/'+current_locale+'.json'));
     const response_data = await response.json();
@@ -367,6 +374,13 @@ async function set_locale_texts(current_locale) {
             const elements = document.getElementsByClassName(text_data.id);
             for (let element of elements) {
                 element.textContent = text_data.text;
+            }
+        }
+        else if (text_data.type == 'class-placeholder') {
+            class_elements_placeholders[text_data.id] = text_data.text;
+            const elements = document.getElementsByClassName(text_data.id);
+            for (let element of elements) {
+                element.setAttribute('placeholder', text_data.text);
             }
         }
     }

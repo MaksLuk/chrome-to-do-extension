@@ -37,6 +37,7 @@ async function blur_input(event) {
     input.setAttribute('readonly', 'true');
     var data_id = input.getAttribute('data-id');
     var button = document.querySelector('.tab-button[data-id="'+data_id+'"]');
+    input.removeAttribute('placeholder');
     if (!input.value) {
         input.value = button.getAttribute('text');
     }
@@ -54,6 +55,7 @@ async function blur_input(event) {
         await rename_page_in_storage(data_id, input.value);
     }
     input.setAttribute('readonly', '');
+    resize_input(input);
 }
 
 // переход на новую страницу
@@ -193,6 +195,18 @@ function resize_priority_input() {
     tabs.removeChild(tempSpan);
 }
 
+// а это у названий страниц
+function resize_input(input) {
+    const tempSpan = document.createElement('span');
+    tempSpan.style.visibility = 'hidden';
+    tempSpan.style.whiteSpace = 'nowrap';
+    tempSpan.style.fontSize = '12px';
+    tempSpan.innerText = input.value;
+    tabs.appendChild(tempSpan);
+    input.style.width = (tempSpan.offsetWidth + 34) + 'px';
+    tabs.removeChild(tempSpan);
+}
+
 function clear_add_task_modal() {
     document.getElementById('add-task-modal').style.display = 'none';
     document.getElementById('dateInput').value = '';
@@ -235,7 +249,7 @@ var current_page_input = undefined;     // вкладка страницы, из
 
 // правый клик мыши - контекстное меню
 document.body.addEventListener('contextmenu', function(event) {
-    //event.preventDefault();
+    event.preventDefault();
     if (event.target.classList.contains('tab-button') || event.target.classList.contains('tab-input')) {
         document.getElementById('context-menu').style = 'display: flex;top: '+event.y+'px;left: '+event.x+'px;';
         if (event.target.classList.contains('tab-button'))

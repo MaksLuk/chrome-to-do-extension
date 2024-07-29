@@ -154,5 +154,11 @@
         "text": "Let's create the first task",
         "desc": "надпись на странице, если на ней нет ни одной задачи",
         "type": "class"
+    },
+    {
+        "id": "tab-input",
+        "text": "Write name",
+        "desc": "плейсхордер, появляющийся при добавлении нового листа",
+        "type": "class-placeholder"
     }
 ]

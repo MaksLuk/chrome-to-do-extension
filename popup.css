@@ -167,7 +167,7 @@ body {
     overflow-x: auto;           /* Включаем горизонтальную прокрутку */
     white-space: nowrap;        /* Запрещаем перенос строк */
     border-bottom: 1px solid #E0E8F1;
-    overflow-y:hidden;
+    overflow-y: hidden;
 }
 
 #tabs::-webkit-scrollbar {
@@ -185,7 +185,7 @@ body {
 }
 
 .selected {
-    border-bottom: 5px solid #E0E8F1;
+    border-bottom: 4px solid #93A4B9;
 }
 
 .hide {
@@ -204,6 +204,8 @@ body {
     background: none;
     text-align: center;
     cursor: pointer;
+    /*padding-left: 8px;
+    padding-right: 8px;*/
     width: 10ch;
 }
 
@@ -293,10 +295,10 @@ section::-webkit-scrollbar {
 }
 
 .custom-checkbox {
-    width: 20px;
-    height: 20px;
+    width: 17px;
+    height: 17px;
     border-radius: 5px;
-    border: 1.5px solid #848484;
+    border: 2px solid #93A4B9;
     display: inline-block;
     margin-right: 10px;
     cursor: pointer;
@@ -385,7 +387,7 @@ section::-webkit-scrollbar {
     width: 92px;
     height: 24px;
     border-radius: 2px;
-    padding: 4px, 10px, 4px, 10px;
+    padding-left: 10px !important;
     margin-right: 4px;
     font-family: 'InterSemiBold';
     font-size: 12px;
@@ -394,13 +396,13 @@ section::-webkit-scrollbar {
 
 input[type="time"]:in-range::-webkit-datetime-edit-hour-field,
 input[type="time"]:in-range::-webkit-datetime-edit-minute-field {
-    color: transparent;
+    color: #465468;
 }
 
 input[type="date"]:in-range::-webkit-datetime-edit-year-field,
 input[type="date"]:in-range::-webkit-datetime-edit-month-field,
 input[type="date"]:in-range::-webkit-datetime-edit-day-field {
-    color: transparent;
+    color: #465468;
 }
 
 #timeInput {
@@ -408,7 +410,7 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     width: 66px;
     height: 24px;
     border-radius: 2px;
-    padding: 4px, 10px, 4px, 10px;
+    padding-left: 10px !important;
     margin-right: 4px;
     font-family: 'InterSemiBold';
     font-size: 12px;
@@ -462,12 +464,12 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     font-size: 16px;
     line-height: 20px;
     color: #10172A;
-    height: 355px;
+    height: 363px;
     width: 424px;
     border: none;
     outline: none;
     background: none;
-    padding-top: 24px;
+    padding-top: 16px;
     margin-bottom: auto;
     resize: none;
 }
