@@ -10,7 +10,7 @@ async function set_data(data) {
 async function get_max_page_id() {
     let data = await chrome.storage.local.get(['data']).then((result) => { 
         let max_id = 0;
-        if (data && data[0]) {
+        if (result.data && result.data[0]) {
             result.data.forEach(item => {
                 if (item['id'] > max_id) {
                     max_id = item['id'];
