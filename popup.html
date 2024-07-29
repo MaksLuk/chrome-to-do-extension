@@ -40,13 +40,24 @@
             <div class="input-row">
                 <input type="date" id="dateInput">
                 <input type="time" id="timeInput">
-                <select id="priorityInput">
+                <!--<select id="priorityInput">
                     <option id="header-option" value="0" disabled selected></option>
                     <option id="high-prority-option" value="3"></option>
                     <option id="medium-prority-option" value="2"></option>
                     <option id="low-prority-option" value="1"></option>
                     <option id="no-prority-option" value="0"></option>
-                </select>
+                </select>-->
+                <button id="priority-select" data-value="0">
+                    <span id="priority-select-text"></span>
+                    <img src="images/Vector.svg" class="arrow" id="arrow2">
+                </button>
+            </div>
+            <div id="priority-buttons-container">
+                <div id="header-option" class="select-button" data-value="0" style="display: none;"></div>
+                <div id="high-prority-option" class="select-button" data-value="3"></div>
+                <div id="medium-prority-option" class="select-button" data-value="2"></div>
+                <div id="low-prority-option" class="select-button" data-value="1"></div>
+                <div id="no-prority-option" class="select-button" data-value="0"></div>
             </div>
             <input type="text" id="add-task-header">
             <textarea id="add-task-description"></textarea>

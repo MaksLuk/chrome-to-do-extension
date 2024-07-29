@@ -105,7 +105,7 @@ document.getElementById('create-task').addEventListener('click', async function(
 
     const active_section = document.querySelector('section[data-id="'+current_tab_id+'"]');
 
-    const priority = document.getElementById('priorityInput').value;
+    const priority = document.getElementById('priority-select').getAttribute('data-value');
     const date = document.getElementById('dateInput').value;
     const time = document.getElementById('timeInput').value;
     const desc = document.getElementById('add-task-description').value;
@@ -146,7 +146,7 @@ document.getElementById('save-task').addEventListener('click', async function() 
     }
     const active_section = document.querySelector('section[data-id="'+current_tab_id+'"]');
 
-    const priority = document.getElementById('priorityInput').value;
+    const priority = document.getElementById('priority-select').getAttribute('data-value');
     const date = document.getElementById('dateInput').value;
     const time = document.getElementById('timeInput').value;
     const desc = document.getElementById('add-task-description').value;
@@ -395,5 +395,6 @@ async function set_locale_texts(current_locale) {
             }
         }
     }
-    resize_priority_input();
+    document.getElementById('priority-select-text').textContent = document.getElementById('header-option').textContent;
+    resize_priority_select();
 }

@@ -74,6 +74,29 @@ body {
     background-color: white;
 }
 
+.input-row {
+    display: flex;
+}
+
+#priority-select {
+    border: 1px solid #93A4B9;
+    border-radius: 2px;
+    width: 90px;
+    color: #465468;
+    font-family: 'InterSemiBold';
+    font-size: 12px;
+    background-color: white;
+    cursor: pointer;
+    padding-left: 4px;
+    display: flex;
+    height: 24px;
+    align-items: center;
+}
+
+#priority-select-text {
+    height: 15px;
+}
+
 #language-select-text {
     text-align: center;
     width: 105px;
@@ -95,8 +118,23 @@ body {
     border: 1px solid #E0E8F1;
     border-radius: 2px;
     box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.1);
-    top: 56px;
+    top: 40px;
     left: 351px;
+    padding: none;
+    margin: none;
+}
+
+#priority-buttons-container {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    height: 92px;
+    position: absolute;
+    border: 1px solid #E0E8F1;
+    border-radius: 2px;
+    box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.1);
+    top: 52px;
+    left: 222px;
     padding: none;
     margin: none;
 }
@@ -388,7 +426,7 @@ section::-webkit-scrollbar {
     height: 24px;
     border-radius: 2px;
     padding-left: 10px !important;
-    margin-right: 4px;
+    margin-right: 8px;
     font-family: 'InterSemiBold';
     font-size: 12px;
     color: #10172A;
@@ -411,7 +449,7 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     height: 24px;
     border-radius: 2px;
     padding-left: 10px !important;
-    margin-right: 4px;
+    margin-right: 8px;
     font-family: 'InterSemiBold';
     font-size: 12px;
     color: #10172A;

@@ -1,10 +1,17 @@
 const tabs = document.getElementById('tabs');                       // вкладки страниц
 const tasks = document.getElementsByClassName('container');         // таски
 const checkboxes = document.getElementsByClassName('checkbox');     // чекбоксы
-const language_select = document.getElementById('language-select'); // селект смены языка
+
+const language_select = document.getElementById('language-select');                 // селект смены языка
 const language_select_data = document.getElementById('select-buttons-container');   // выпадающее меню языков
-const arrow = document.getElementById('arrow');                     // стрелка у селекта смены языка
-const language_select_text = document.getElementById('language-select-text'); // текст селекта смены языка
+const arrow = document.getElementById('arrow');                                     // стрелка у селекта смены языка
+const language_select_text = document.getElementById('language-select-text');       // текст селекта смены языка
+
+const priority_select = document.getElementById('priority-select');                 // селект смены приоритета
+const priority_select_data = document.getElementById('priority-buttons-container'); // выпадающее меню приоритетов
+const arrow2 = document.getElementById('arrow2');                                   // стрелка у селекта смены приоритета
+const priority_select_text = document.getElementById('priority-select-text');       // текст селекта смены приоритета
+
 var current_tab_id = 1;
 
 // обработчик события wheel для горизонтальной прокрутки
@@ -130,12 +137,19 @@ async function show_modal_change_task(event) {
 
     document.getElementById('dateInput').value = task_data['date'];
     document.getElementById('timeInput').value = task_data['time'];
-    document.getElementById('priorityInput').value = task_data['priority'];
+    document.getElementById('priority-select').setAttribute('data-value', task_data['priority']);
+    if (task_data['priority'] == '0') 
+        document.querySelector('#priority-select-text').textContent = document.querySelector('#header-option').textContent;
+    else if (task_data['priority'] == '1') 
+        document.querySelector('#priority-select-text').textContent = document.querySelector('#high-prority-option').textContent;
+    else if (task_data['priority'] == '2') 
+        document.querySelector('#priority-select-text').textContent = document.querySelector('#medium-prority-option').textContent;
+    else if (task_data['priority'] == '3') 
+        document.querySelector('#priority-select-text').textContent = document.querySelector('#low-prority-option').textContent;
     document.getElementById('add-task-header').value = task_data['header'];
     document.getElementById('add-task-header').setAttribute('data-text', task_data['header']);
     document.getElementById('add-task-description').value = task_data['desc'];
-
-    resize_priority_input();
+    resize_priority_select();
 }
 
 window.onclick = function(event) {
@@ -159,10 +173,25 @@ window.onclick = function(event) {
             language_select_data_hide();
         }
     }
+    if (priority_select.contains(event.target)) {
+        if (priority_select_data.style.display != 'flex') {
+            priority_select_data.style.display = 'flex';
+            priority_select.style.border = '1px solid #183DAE';
+            arrow2.style.transform = 'rotate(0deg)';
+        }
+        else {
+            priority_select_data_hide();
+        }
+    }
+    else {
+        if (priority_select_data.style.display == 'flex') {
+            priority_select_data_hide();
+        }
+    }
 };
 
 // кнопки смены языка
-const language_select_buttons = document.querySelectorAll('.select-button');
+const language_select_buttons = document.querySelectorAll('#select-buttons-container .select-button');
 language_select_buttons.forEach(button => {
     button.addEventListener('click', async function() {
         language_select_text.textContent = this.textContent;
@@ -180,19 +209,21 @@ function language_select_data_hide() {
     arrow.style.transform = 'rotate(180deg)';
 }
 
-document.getElementById('priorityInput').addEventListener('change', resize_priority_input);
+// кнопки смены приоритета
+const priority_select_buttons = document.querySelectorAll('#priority-buttons-container .select-button');
+priority_select_buttons.forEach(button => {
+    button.addEventListener('click', async function() {
+        priority_select_text.textContent = this.textContent;
+        priority_select.setAttribute('data-value', this.getAttribute('data-value'));
+        priority_select_data_hide();
+        resize_priority_select();
+    });
+});
 
-function resize_priority_input() {
-    const priorityInput = document.getElementById('priorityInput');
-    const tempSpan = document.createElement('span');
-    tempSpan.style.visibility = 'hidden';
-    tempSpan.style.whiteSpace = 'nowrap';
-    tempSpan.style.fontSize = '12px';
-    tempSpan.innerText = priorityInput.options[priorityInput.selectedIndex].text;
-
-    tabs.appendChild(tempSpan);
-    priorityInput.style.width = (tempSpan.offsetWidth + 34) + 'px';
-    tabs.removeChild(tempSpan);
+function priority_select_data_hide() {
+    priority_select_data.style.display = 'none';
+    priority_select.style.border = '1px solid #93A4B9';
+    arrow2.style.transform = 'rotate(180deg)';
 }
 
 // а это у названий страниц
@@ -203,7 +234,20 @@ function resize_input(input) {
     tempSpan.style.fontSize = '12px';
     tempSpan.innerText = input.value;
     tabs.appendChild(tempSpan);
-    input.style.width = (tempSpan.offsetWidth + 34) + 'px';
+    console.log('tempSpan.offsetWidth');
+    input.style.width = (tempSpan.offsetWidth + 16) + 'px';
+    tabs.removeChild(tempSpan);
+}
+
+// а это у селекта приоритетов
+function resize_priority_select() {
+    const tempSpan = document.createElement('span');
+    tempSpan.style.visibility = 'hidden';
+    tempSpan.style.whiteSpace = 'nowrap';
+    tempSpan.style.fontSize = '12px';
+    tempSpan.innerText = priority_select_text.textContent;
+    tabs.appendChild(tempSpan);
+    priority_select.style.width = (tempSpan.offsetWidth + 34) + 'px';
     tabs.removeChild(tempSpan);
 }
 
@@ -211,7 +255,8 @@ function clear_add_task_modal() {
     document.getElementById('add-task-modal').style.display = 'none';
     document.getElementById('dateInput').value = '';
     document.getElementById('timeInput').value = '';
-    document.getElementById('priorityInput').value = '0';
+    document.getElementById('priority-select').setAttribute('data-value', '0');
+    document.getElementById('priority-select-text').textContent = document.querySelector('#header-option').textContent;
     document.getElementById('add-task-header').value = '';
     document.getElementById('add-task-description').value = '';
     document.getElementById('error-modal').style.display = 'none';
