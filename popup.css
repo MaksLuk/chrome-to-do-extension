@@ -13,7 +13,7 @@ body {
     height: (600-16-16)px;
     display: flex;
     flex-direction: column;
-    padding: 16px 0px 16px 0px;
+    padding-top: 16px;
     margin: 0px;
 }
 
@@ -27,24 +27,25 @@ body {
 .footer {
     display: flex;
     align-items: center;
-    height: (59-16-16)px;
     margin-top: 8px;
     border-top: 1px solid #E0E8F1;
     background-color: #F8FAFC;
-    padding: 16px, 24px, 16px, 24px;
 }
 
 #clear-completed {
     margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 #clear-all {
     margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 #add-task {
     margin-top: 16px;
     margin-right: 24px;
+    margin-bottom: 16px;
 }
 
 .title {
