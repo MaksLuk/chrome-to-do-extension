@@ -150,6 +150,12 @@
         "type": "text"
     },
     {
+        "id": "no-one-list",
+        "text": "Сreate a tasklist to create tasks",
+        "desc": "пытаются создать задачу, когда не создано ни одного тасклиста",
+        "type": "text"
+    },
+    {
         "id": "zero-tasks",
         "text": "Let's create the first task",
         "desc": "надпись на странице, если на ней нет ни одной задачи",

@@ -455,25 +455,6 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     color: #10172A;
 }
 
-#priorityInput {
-    border: 1px solid #93A4B9;
-    width: 83px;
-    height: 24px;
-    color: #465468;
-    font-family: 'InterSemiBold';
-    font-size: 12px;
-    background-color: white;
-    cursor: pointer;
-    padding-left: 4px;
-}
-
-#priorityInput options {
-    font-family: 'InterSemiBold';
-    font-size: 12px;
-    line-height: 15px;
-    color: #10172A;
-}
-
 #add-task-header {
     font-family: 'InterSemiBold';
     font-style: normal;

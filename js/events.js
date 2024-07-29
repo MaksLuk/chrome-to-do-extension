@@ -85,6 +85,15 @@ async function delete_task(event) {
 
 // добавление новой задачи на страницу
 document.getElementById('create-task').addEventListener('click', async function() {
+    if (current_tab_id === null) {
+        document.getElementById('error-modal').style.display = 'flex';
+        document.getElementById('tasklist-already-exists').style.display = 'none';
+        document.getElementById('unknown-error').style.display = 'none';
+        document.getElementById('did-not-specify-task-name').style.display = 'none';
+        document.getElementById('task-already-exists').style.display = 'none';
+        document.getElementById('no-one-list').style.display = 'block';
+        return;
+    }
     const new_task_header = document.getElementById('add-task-header').value;
     if (!new_task_header) {
         document.getElementById('error-modal').style.display = 'flex';
@@ -92,6 +101,7 @@ document.getElementById('create-task').addEventListener('click', async function(
         document.getElementById('unknown-error').style.display = 'none';
         document.getElementById('did-not-specify-task-name').style.display = 'block';
         document.getElementById('task-already-exists').style.display = 'none';
+        document.getElementById('no-one-list').style.display = 'none';
         return;
     }
     if (! await is_task_name_free(current_tab_id, new_task_header)) {
@@ -100,7 +110,8 @@ document.getElementById('create-task').addEventListener('click', async function(
         document.getElementById('unknown-error').style.display = 'none';
         document.getElementById('did-not-specify-task-name').style.display = 'none';
         document.getElementById('task-already-exists').style.display = 'block';
-        return
+        document.getElementById('no-one-list').style.display = 'none';
+        return;
     }
 
     const active_section = document.querySelector('section[data-id="'+current_tab_id+'"]');
@@ -131,6 +142,7 @@ document.getElementById('save-task').addEventListener('click', async function() 
         document.getElementById('unknown-error').style.display = 'none';
         document.getElementById('did-not-specify-task-name').style.display = 'block';
         document.getElementById('task-already-exists').style.display = 'none';
+        document.getElementById('no-one-list').style.display = 'none';
         return;
     }
     const old_name = document.getElementById('add-task-header').getAttribute('data-text');
@@ -141,6 +153,7 @@ document.getElementById('save-task').addEventListener('click', async function() 
             document.getElementById('unknown-error').style.display = 'none';
             document.getElementById('did-not-specify-task-name').style.display = 'none';
             document.getElementById('task-already-exists').style.display = 'block';
+            document.getElementById('no-one-list').style.display = 'none';
             return
         }
     }
@@ -178,7 +191,6 @@ function formatDate(inputDate) {
     const formattedYear = year.slice(-2);
     return `${day}.${month}.${formattedYear}`;
 }
-
 
 function create_new_task_element(header, desc, date, time, priority, completed) {
     const new_task_container = document.createElement('div');
@@ -338,7 +350,7 @@ document.getElementById('ok-delete-all').addEventListener('click', async functio
 document.addEventListener('DOMContentLoaded', async function() {
     // листы и задачи
     const data = await get_data();
-    if (data) {    
+    if (data && data[0]) {    
         for (let page of data) {
             add_new_page(page['id'], page['name'], page['tasks'], false)
         }

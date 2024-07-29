@@ -12,7 +12,7 @@ const priority_select_data = document.getElementById('priority-buttons-container
 const arrow2 = document.getElementById('arrow2');                                   // стрелка у селекта смены приоритета
 const priority_select_text = document.getElementById('priority-select-text');       // текст селекта смены приоритета
 
-var current_tab_id = 1;
+var current_tab_id = null;
 
 // обработчик события wheel для горизонтальной прокрутки
 tabs.addEventListener('wheel', (event) => {
@@ -55,6 +55,7 @@ async function blur_input(event) {
             document.getElementById('unknown-error').style.display = 'none';
             document.getElementById('did-not-specify-task-name').style.display = 'none';
             document.getElementById('task-already-exists').style.display = 'none';
+            document.getElementById('no-one-list').style.display = 'none';
             input.value = button.getAttribute('text');
             return;
         }
@@ -128,6 +129,7 @@ async function show_modal_change_task(event) {
             document.getElementById('unknown-error').style.display = 'block';
             document.getElementById('did-not-specify-task-name').style.display = 'none';
             document.getElementById('task-already-exists').style.display = 'none';
+            document.getElementById('no-one-list').style.display = 'none';
         return;
     }
     document.getElementById('add-task-modal').style.display = 'block';
@@ -313,7 +315,18 @@ document.getElementById('rename-list').addEventListener('click', () => {
 
 // удаление страницы по клику на кнопку в выпадающем меню
 document.getElementById('delete-list').addEventListener('click', async () => {
-    await remove_tasklist_from_storage(current_page_input.getAttribute('data-id'));
+    const deleting_page_id = current_page_input.getAttribute('data-id');
+    await remove_tasklist_from_storage(deleting_page_id);
+    if (deleting_page_id === current_tab_id) {
+        const data = await get_data();
+        if (!(data && data[0])) current_tab_id = null;
+        else {
+            current_tab_id = data[0]['id'];
+            go_to_page(current_tab_id);
+        }
+    }
     current_page_input.parentElement.remove();
+    const page_section = document.querySelector('section[data-id="'+deleting_page_id+'"]');
+    page_section.remove();
     await change_bage_text();
 });

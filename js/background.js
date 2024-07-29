@@ -6,5 +6,6 @@
             if (!task.completed) count += 1;
         }
     }
+    if (count == 0) count = '';
     chrome.action.setBadgeText({text: ''+count});
 })();
