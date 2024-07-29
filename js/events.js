@@ -173,6 +173,13 @@ document.getElementById('save-task').addEventListener('click', async function() 
     await change_task_data_in_storage(current_tab_id, old_name, new_task_header, desc, date, time, priority);
 });
 
+function formatDate(inputDate) {
+    const [year, month, day] = inputDate.split('-');
+    const formattedYear = year.slice(-2);
+    return `${day}.${month}.${formattedYear}`;
+}
+
+
 function create_new_task_element(header, desc, date, time, priority, completed) {
     const new_task_container = document.createElement('div');
     new_task_container.className = 'container';
@@ -205,6 +212,9 @@ function create_new_task_element(header, desc, date, time, priority, completed) 
         if (draggedItem !== new_task_container) {
             const active_section = document.querySelector('section[data-id="'+current_tab_id+'"]');
             const allRows = Array.from(active_section.querySelectorAll('.container'));
+            if (!allRows) {
+                return;
+            }
             const draggedIndex = allRows.indexOf(draggedItem);
             const targetIndex = allRows.indexOf(new_task_container);
 
@@ -247,8 +257,9 @@ function create_new_task_element(header, desc, date, time, priority, completed) 
     const datetime = document.createElement('div');
     datetime.className = 'date';
     datetime.textContent = '';
-    if (date) datetime.textContent += date.replaceAll('-', '.');
-    if (time) datetime.textContent += ', ' + time;
+    if (date) datetime.textContent += formatDate(date);
+    if (date && time) datetime.textContent += ', ';
+    if (time) datetime.textContent += time;
 
     const emoji = document.createElement('div');
     emoji.className = 'emoji';
