@@ -196,7 +196,7 @@ window.onclick = function(event) {
 const language_select_buttons = document.querySelectorAll('#select-buttons-container .select-button');
 language_select_buttons.forEach(button => {
     button.addEventListener('click', async function() {
-        language_select_text.textContent = this.textContent;
+        language_select_text.innerHTML = this.innerHTML;
         const current_locale = this.getAttribute('data-value');
         await set_locale_texts(current_locale);
         await set_locale(current_locale);

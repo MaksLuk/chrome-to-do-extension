@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     current_locale = await get_locale();
     for (let button of language_select_buttons) {
         if (button.getAttribute('data-value') == current_locale) {
-            language_select_text.textContent = button.textContent;
+            language_select_text.innerHTML = button.innerHTML;
         }
     }
     await set_locale_texts(current_locale);
