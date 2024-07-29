@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasklify</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">Tasklify</div>
+        <select id="language-select" class="select">
+            <option value="en">🇺🇲 English</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="it">🇮🇹 Italiano</option>
+        </select>
+    </div>
+    <div class="main">
+        <div id="tabs">
+            <button id="new-list-btn"></button>
+        </div>
+        <main>
+        </main>
+    </div>
+    <div class="footer">
+        <button id="clear-completed" class="white-button first-button"></button>
+        <button id="clear-all" class="white-button"></button>
+        <button id="add-task" class="blue-button"></button>
+    </div>
+
+    <div id="add-task-modal">
+        <div id="add-task-modal-content">
+            <div class="input-row">
+                <input type="date" id="dateInput">
+                <input type="time" id="timeInput">
+                <select id="priorityInput">
+                    <option id="header-option" value="0" disabled selected></option>
+                    <option id="high-prority-option" value="3"></option>
+                    <option id="medium-prority-option" value="2"></option>
+                    <option id="low-prority-option" value="1"></option>
+                    <option id="no-prority-option" value="0"></option>
+                </select>
+            </div>
+            <input type="text" id="add-task-header">
+            <textarea id="add-task-description"></textarea>
+            <div style="display: flex; padding-top: 16px;">
+                <button id="cancel-task" class="white-button first-button"></button>
+                <button id="save-task" class="blue-button" style="display: none;"></button>
+                <button id="create-task" class="blue-button"></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="error-modal">
+        <div id="tasklist-already-exists" class="error-text" style="display: none;"></div>
+        <div id="unknown-error" class="error-text" style="display: none;"></div>
+        <div id="did-not-specify-task-name" class="error-text" style="display: none;"></div>
+        <div id="task-already-exists" class="error-text" style="display: none;"></div>
+        <button id="close-error">❌</button>
+    </div>
+
+    <div id="delete-all-modal">
+        <div id="delete-completed-text" style="display: none;"></div>
+        <div id="delete-all-text" style="display: none;"></div>
+        <div style="display: flex; padding-top: 12px; padding-right: 16px;">
+            <button id="cancel-delete-all" class="white-button first-button"></button>
+            <button id="ok-delete-all" class="blue-button"></button>
+        </div>
+    </div>
+
+    <div id="context-menu">
+        <button id="rename-list"></button>
+        <button id="delete-list"></button>
+    </div>
+
+    <script src="js/design.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/events.js"></script>
+</body>
+</html>

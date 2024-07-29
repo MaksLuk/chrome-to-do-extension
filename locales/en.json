@@ -1,0 +1,158 @@
+[
+    {
+        "id": "new-list-btn",
+        "text": "+ New List",
+        "desc": "текст для кнопки добавления нового тасклиста",
+        "type": "text"
+    },
+    {
+        "id": "clear-all",
+        "text": "Delete all",
+        "desc": "текст для кнопки удаления всех тасков",
+        "type": "text"
+    },
+    {
+        "id": "clear-completed",
+        "text": "Clear completed tasks",
+        "desc": "текст для кнопки удаления выделенных тасков",
+        "type": "text"
+    },
+    {
+        "id": "add-task",
+        "text": "+ Add task",
+        "desc": "текст для кнопки добавления нового таска",
+        "type": "text"
+    },
+    {
+        "id": "header-option",
+        "text": "Priority",
+        "desc": "текст, который отображается в селекте установки приоритета, когда ничего не выбрано",
+        "type": "text"
+    },
+    {
+        "id": "high-prority-option",
+        "text": "🔴 High prority",
+        "desc": "текст высокого приоритета",
+        "type": "text"
+    },
+    {
+        "id": "medium-prority-option",
+        "text": "🟡 Medium prority",
+        "desc": "текст среднего приоритета",
+        "type": "text"
+    },
+    {
+        "id": "low-prority-option",
+        "text": "🟢 Low prority",
+        "desc": "текст низкого приоритета",
+        "type": "text"
+    },
+    {
+        "id": "no-prority-option",
+        "text": "➖ No priority",
+        "desc": "текст отсутствия приоритета",
+        "type": "text"
+    },
+    {
+        "id": "cancel-task",
+        "text": "Cancel",
+        "desc": "текст кнопки отмены создания/редактирования задачи",
+        "type": "text"
+    },
+    {
+        "id": "save-task",
+        "text": "Save",
+        "desc": "текст кнопки сохранения редактирования задачи",
+        "type": "text"
+    },
+    {
+        "id": "create-task",
+        "text": "Create",
+        "desc": "текст кнопки создания задачи",
+        "type": "text"
+    },
+    {
+        "id": "cancel-delete-all",
+        "text": "No",
+        "desc": "удалить всё? нет",
+        "type": "text"
+    },
+    {
+        "id": "ok-delete-all",
+        "text": "Yes",
+        "desc": "удалить всё? да",
+        "type": "text"
+    },
+    {
+        "id": "rename-list",
+        "text": "✏️ Rename",
+        "desc": "контекстное меню - переименовать лист",
+        "type": "text"
+    },
+    {
+        "id": "delete-list",
+        "text": "🗑️ Delete",
+        "desc": "контекстное меню - удалить лист",
+        "type": "text"
+    },
+    {
+        "id": "add-task-header",
+        "text": "New task",
+        "desc": "плейсхолдер заголовки новой задачи",
+        "type": "placeholder"
+    },
+    {
+        "id": "add-task-description",
+        "text": "Description",
+        "desc": "плейсхолдер описания новой задачи",
+        "type": "placeholder"
+    },
+    {
+        "id": "delete-task",
+        "text": "Delete",
+        "desc": "текст кнопки удаления задачи",
+        "type": "class"
+    },
+    {
+        "id": "delete-all-text",
+        "text": "Are you sure you want to delete all tasks?",
+        "desc": "уверены, что хотите удалить все задачи?",
+        "type": "text"
+    },
+    {
+        "id": "delete-completed-text",
+        "text": "Are you sure you want to delete completed tasks?",
+        "desc": "уверены, что хотите удалить выполненные задачи?",
+        "type": "text"
+    },
+    {
+        "id": "tasklist-already-exists",
+        "text": "A tasklist with the same name already exists",
+        "desc": "пытаются создать лист с уже существующим именем",
+        "type": "text"
+    },
+    {
+        "id": "unknown-error",
+        "text": "Unknown error, restart the application",
+        "desc": "неизвестная ошибка при создании листа",
+        "type": "text"
+    },
+    {
+        "id": "did-not-specify-task-name",
+        "text": "Specify the task name",
+        "desc": "не указано имя задачи при её создании",
+        "type": "text"
+    },
+    {
+        "id": "task-already-exists",
+        "text": "A task with the same name already exists",
+        "desc": "пытаются создать задачу с уже существующим именем",
+        "type": "text"
+    },
+    {
+        "id": "zero-tasks",
+        "text": "Let's create the first task",
+        "desc": "надпись на странице, если на ней нет ни одной задачи",
+        "type": "class"
+    }
+]

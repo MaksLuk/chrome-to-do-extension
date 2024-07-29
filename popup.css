@@ -1,0 +1,529 @@
+@font-face {
+    font-family: 'InterRegular';
+    src: url('fonts/Inter-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'InterSemiBold';
+    src: url('fonts/Inter-SemiBold.woff') format('woff');
+}
+
+body {
+    width: 432px;
+    height: 552px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    margin: 0px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    margin-top: 8px;
+    border-top: 1px solid #E0E8F1;
+}
+
+#clear-completed {
+    margin-top: 16px;
+}
+
+#clear-all {
+    margin-top: 16px;
+}
+
+#add-task {
+    margin-top: 16px;
+}
+
+.title {
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #10172A;
+    margin-right: auto;
+    padding-left: 0px;
+    user-select: none;
+}
+
+.select {
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #10172A;
+    height: 24px;
+    width: 105px;
+    padding-right: 0px;
+    background-color: white;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+}
+
+select option {
+    border: 1px solid #E0E8F1;
+    border-radius: 2px;
+    padding: 4px;
+}
+
+.main {
+    width: 432px;
+    height: 477px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* кнопки синяя и белая с синим текстом */
+.white-button {
+    height: 27px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: 0px;
+    background-color: white;
+    color: #183DAE;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 16px;
+}
+
+.first-button {
+    margin-left: auto;
+}
+
+.blue-button {
+    height: 27px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: 0px;
+    background-color: #183DAE;
+    color: white;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    border-radius: 2px;
+}
+
+/* контейнер для заголовков страниц */
+#tabs {
+    height: 31px;
+    overflow-x: auto;           /* Включаем горизонтальную прокрутку */
+    white-space: nowrap;        /* Запрещаем перенос строк */
+    border-bottom: 1px solid #E0E8F1;
+    overflow-y:hidden;
+}
+
+#tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* кнопки для переключения между страницами */
+.tab-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 12px;
+    height: 31px;
+}
+
+.selected {
+    border-bottom: 5px solid #E0E8F1;
+}
+
+.hide {
+    display: none;
+}
+
+/* input, располагающийся внутри кнопки для редактирования названия страницы */
+.tab-input {
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #10172A;
+    border: none;
+    outline: none;
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    width: 10ch;
+}
+
+#new-list-btn {
+    height: 31px;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #183DAE;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+main {
+    margin-top: 8px;
+    border: none;
+    overflow-y: auto;
+    height: 445px;
+}
+
+main::-webkit-scrollbar {
+    display: none;
+}
+
+section {
+    border: none;
+}
+
+section::-webkit-scrollbar {
+    display: none;
+}
+
+.zero-tasks {
+    text-align: center;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #10172A;
+    padding-top: 216px;
+    user-select: none;
+}
+
+/* ДАЛЕЕ СТИЛИ ТАСКОВ */
+
+.container {
+    width: (432-24)px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #E0E8F1;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    margin-left: 34px;
+    font-family: 'InterRegular';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #10172A;
+    margin-right: auto;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1.5px solid #848484;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.checkbox-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.real-checkbox {
+    display: none;
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1.5px solid #848484;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.custom-checkbox.checked::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-image: url('images/check-mark.png');
+    background-size: cover;
+}
+
+.text {
+    height: 17px;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #10172A;
+    margin-right: auto;
+    padding-left: 0px;
+    cursor: pointer;
+}
+
+.emoji {
+    font-size: 12px;
+    padding-left: 12px;
+}
+
+.date {
+    height: 15px;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #64758C;
+}
+
+.delete-task {
+    height: 15px;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #DD2726;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding-right: 0px;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+/* модальное окно добавления задачи */
+#add-task-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#add-task-modal-content {
+    background-color: #F8FAFC;
+    padding: 24px 24px 16px 24px;
+    border-radius: 16px 16px 0 0;
+    width: 432px;
+    height: 500px;
+    position: absolute;
+    bottom: 0;
+}
+
+#dateInput {
+    border: 1px solid #93A4B9;
+    width: 92px;
+    height: 24px;
+    border-radius: 2px;
+    padding: 4px, 10px, 4px, 10px;
+    margin-right: 4px;
+    font-family: 'InterSemiBold';
+    font-size: 12px;
+    color: #10172A;
+}
+
+input[type="time"]:in-range::-webkit-datetime-edit-hour-field,
+input[type="time"]:in-range::-webkit-datetime-edit-minute-field {
+    color: transparent;
+}
+
+input[type="date"]:in-range::-webkit-datetime-edit-year-field,
+input[type="date"]:in-range::-webkit-datetime-edit-month-field,
+input[type="date"]:in-range::-webkit-datetime-edit-day-field {
+    color: transparent;
+}
+
+#timeInput {
+    border: 1px solid #93A4B9;
+    width: 66px;
+    height: 24px;
+    border-radius: 2px;
+    padding: 4px, 10px, 4px, 10px;
+    margin-right: 4px;
+    font-family: 'InterSemiBold';
+    font-size: 12px;
+    color: #10172A;
+}
+
+#priorityInput {
+    border: 1px solid #93A4B9;
+    width: 83px;
+    height: 24px;
+    color: #465468;
+    font-family: 'InterSemiBold';
+    font-size: 12px;
+    background-color: white;
+    cursor: pointer;
+    padding-left: 4px;
+}
+
+#priorityInput options {
+    font-family: 'InterSemiBold';
+    font-size: 12px;
+    line-height: 15px;
+    color: #10172A;
+}
+
+#add-task-header {
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #10172A;
+    height: 22px;
+    width: 408px;
+    border: none;
+    outline: none;
+    background: none;
+    padding-top: 24px;
+}
+
+#add-task-header::placeholder {
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #93A4B9;
+}
+
+#add-task-description {
+    font-family: 'InterRegular';
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #10172A;
+    height: 355px;
+    width: 424px;
+    border: none;
+    outline: none;
+    background: none;
+    padding-top: 24px;
+    margin-bottom: auto;
+    resize: none;
+}
+
+#add-task-description::-webkit-scrollbar {
+    display: none;
+}
+
+#add-task-description::placeholder {
+    font-family: 'InterRegular';
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #93A4B9;
+}
+
+/* всплывающее окно ошибки */
+#error-modal {
+    display: none;
+    position: absolute;
+    width: 433px;
+    height: 49px;
+    top: 484px;
+    left: 23.5px;
+    z-index: 2;
+    border: 1px solid #DD2726;
+    border-radius: 8px;
+    background-color: #FEE2E2;
+    box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.1);
+    vertical-align: middle;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.error-text {
+    color: #10172A;
+    margin-right: auto;
+    padding-top: 16px;
+    padding-left: 16px;
+}
+
+#close-error {
+    border: none;
+    width: 14px;
+    height: 14px;
+    margin-top: 16px;
+    margin-right: 23px;
+}
+
+/* всплывающее окно удаления всех задач */
+#delete-all-modal {
+    display: none;
+    position: absolute;
+    width: 433px;
+    height: 90px;
+    top: 443px;
+    left: 23.5px;
+    z-index: 2;
+    border: 1px solid #E0E8F1;
+    border-radius: 8px;
+    background-color: #F8FAFC;
+    box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.1);
+    vertical-align: middle;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+#delete-all-text,
+#delete-completed-text {
+    padding-top: 16px;
+    padding-left: 16px;
+}
+
+/* контекстное меню удаления и изменения названия страницы */
+#context-menu {
+    width: auto;
+    height: 46px;
+    background-color: white;
+    box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #E0E8F1;
+    border-radius: 2px;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+}
+
+#rename-list,
+#delete-list {
+    background-color: white;
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #10172A;
+    border: none;
+    width: auto;
+    height: 23px;
+    margin-left: 4px;
+    margin-right: 4px;
+    text-align: left;
+}
