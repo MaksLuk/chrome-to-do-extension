@@ -9,26 +9,29 @@
 }
 
 body {
-    width: 432px;
-    height: 552px;
+    width: 480px;
+    height: (600-16-16)px;
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding: 16px 0px 16px 0px;
     margin: 0px;
 }
 
 .header {
     display: flex;
     align-items: center;
-    height: 32px;
+    height: (56-16)px;
+    padding: 0px 24px 20px 24px;
 }
 
 .footer {
     display: flex;
     align-items: center;
-    height: 34px;
+    height: (59-16-16)px;
     margin-top: 8px;
     border-top: 1px solid #E0E8F1;
+    background-color: #F8FAFC;
+    padding: 16px, 24px, 16px, 24px;
 }
 
 #clear-completed {
@@ -41,6 +44,7 @@ body {
 
 #add-task {
     margin-top: 16px;
+    margin-right: 24px;
 }
 
 .title {
@@ -54,32 +58,74 @@ body {
     user-select: none;
 }
 
-.select {
+/* кастомный select выбора языка */
+.select-container {
     font-family: 'InterSemiBold';
     font-style: normal;
     font-size: 12px;
     line-height: 15px;
-    color: #10172A;
-    height: 24px;
-    width: 105px;
-    padding-right: 0px;
-    background-color: white;
+    display: flex;
     align-items: center;
+    cursor: pointer;
     border: none;
+    width: 105px;
+    height: 24px;
     border-radius: 4px;
+    background-color: white;
 }
 
-select option {
+#language-select-text {
+    text-align: center;
+    width: 105px;
+}
+
+.arrow {
+    margin-left: auto;
+    transition: transform 0.3s;
+    transform: rotate(180deg);
+}
+
+#select-buttons-container {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    width: 103px;
+    height: 138px;
+    position: absolute;
     border: 1px solid #E0E8F1;
     border-radius: 2px;
-    padding: 4px;
+    box-shadow: 0px 0px 15px 8px rgba(0, 0, 0, 0.1);
+    top: 56px;
+    left: 351px;
+    padding: none;
+    margin: none;
 }
 
+.select-button {
+    font-family: 'InterSemiBold';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    padding: none;
+    border: none;
+    background-color: white;
+    color: #10172A;
+    cursor: pointer;
+    padding: 4px 10px 4px 10px;
+}
+
+.select-button:hover {
+    background-color: #F2F4F8;
+}
+
+
 .main {
-    width: 432px;
-    height: 477px;
+    width: (480-24-24)px;
+    height: 462px;
     display: flex;
     flex-direction: column;
+    margin-left: 24px;
+    margin-right: 24px;
 }
 
 /* кнопки синяя и белая с синим текстом */
@@ -88,13 +134,12 @@ select option {
     padding-left: 12px;
     padding-right: 12px;
     border: 0px;
-    background-color: white;
+    background-color: #F8FAFC;
     color: #183DAE;
     font-family: 'InterSemiBold';
     font-style: normal;
     font-size: 12px;
     line-height: 15px;
-    margin-right: 16px;
 }
 
 .first-button {
@@ -105,6 +150,7 @@ select option {
     height: 27px;
     padding-left: 12px;
     padding-right: 12px;
+    margin-left: 16px;
     border: 0px;
     background-color: #183DAE;
     color: white;
@@ -477,10 +523,10 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
 #delete-all-modal {
     display: none;
     position: absolute;
-    width: 433px;
+    width: 456px;
     height: 90px;
     top: 443px;
-    left: 23.5px;
+    left: 12px;
     z-index: 2;
     border: 1px solid #E0E8F1;
     border-radius: 8px;

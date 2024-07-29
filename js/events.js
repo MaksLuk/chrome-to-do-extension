@@ -240,7 +240,9 @@ function create_new_task_element(header, desc, date, time, priority, completed) 
 
     const datetime = document.createElement('div');
     datetime.className = 'date';
-    datetime.textContent = date + ' ' + time;
+    datetime.textContent = '';
+    if (date) datetime.textContent += date.replaceAll('-', '.');
+    if (time) datetime.textContent += ', ' + time;
 
     const emoji = document.createElement('div');
     emoji.className = 'emoji';
@@ -328,7 +330,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     // язык
     current_locale = await get_locale();
-    document.getElementById('language-select').value = current_locale;
+    for (let button of language_select_buttons) {
+        if (button.getAttribute('data-value') == current_locale) {
+            language_select_text.textContent = button.textContent;
+        }
+    }
     await set_locale_texts(current_locale);
 });
 
@@ -346,13 +352,6 @@ async function strike_checkbox(event) {
     await change_task_status_in_storage(current_tab_id, task_title.textContent);
     await change_bage_text();
 }
-
-// смена языка
-document.getElementById('language-select').addEventListener('change', async function() {
-    const current_locale = this.value;
-    await set_locale_texts(current_locale);
-    await set_locale(current_locale);
-});
 
 var class_elements_text = {};
 async function set_locale_texts(current_locale) {

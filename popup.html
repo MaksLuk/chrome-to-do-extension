@@ -9,14 +9,18 @@
 <body>
     <div class="header">
         <div class="title">Tasklify</div>
-        <select id="language-select" class="select">
-            <option value="en">🇺🇲 English</option>
-            <option value="ru">🇷🇺 Русский</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="pt">🇵🇹 Português</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="it">🇮🇹 Italiano</option>
-        </select>
+        <button class="select-container" id="language-select">
+            <span id="language-select-text"></span>
+            <img src="images/Vector.svg" class="arrow" id="arrow">
+        </button>
+    </div>
+    <div id="select-buttons-container">
+        <div class="select-button" data-value="en">🇺🇲 English</div>
+        <div class="select-button" data-value="ru">🇷🇺 Русский</div>
+        <div class="select-button" data-value="es">🇪🇸 Español</div>
+        <div class="select-button" data-value="pt">🇵🇹 Português</div>
+        <div class="select-button" data-value="de">🇩🇪 Deutsch</div>
+        <div class="select-button" data-value="it">🇮🇹 Italiano</div>
     </div>
     <div class="main">
         <div id="tabs">

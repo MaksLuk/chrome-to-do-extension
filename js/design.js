@@ -1,6 +1,10 @@
 const tabs = document.getElementById('tabs');                       // вкладки страниц
 const tasks = document.getElementsByClassName('container');         // таски
 const checkboxes = document.getElementsByClassName('checkbox');     // чекбоксы
+const language_select = document.getElementById('language-select'); // селект смены языка
+const language_select_data = document.getElementById('select-buttons-container');   // выпадающее меню языков
+const arrow = document.getElementById('arrow');                     // стрелка у селекта смены языка
+const language_select_text = document.getElementById('language-select-text'); // текст селекта смены языка
 var current_tab_id = 1;
 
 // обработчик события wheel для горизонтальной прокрутки
@@ -137,7 +141,42 @@ window.onclick = function(event) {
     if (event.target === document.getElementById('add-task-modal')) {
         clear_add_task_modal();
     }
+    if (language_select.contains(event.target)) {
+        if (language_select_data.style.display != 'flex') {
+            language_select_data.style.display = 'flex';
+            language_select.style.backgroundColor = '#F2F4F8';
+            language_select.style.border = '1px solid #E0E8F1';
+            arrow.style.transform = 'rotate(0deg)';
+        }
+        else {
+            language_select_data_hide();
+        }
+    }
+    else {
+        if (language_select_data.style.display == 'flex') {
+            language_select_data_hide();
+        }
+    }
 };
+
+// кнопки смены языка
+const language_select_buttons = document.querySelectorAll('.select-button');
+language_select_buttons.forEach(button => {
+    button.addEventListener('click', async function() {
+        language_select_text.textContent = this.textContent;
+        const current_locale = this.getAttribute('data-value');
+        await set_locale_texts(current_locale);
+        await set_locale(current_locale);
+        language_select_data_hide();
+    });
+});
+
+function language_select_data_hide() {
+    language_select_data.style.display = 'none';
+    language_select.style.backgroundColor = 'white';
+    language_select.style.border = 'none';
+    arrow.style.transform = 'rotate(180deg)';
+}
 
 document.getElementById('priorityInput').addEventListener('change', resize_priority_input);
 
@@ -196,7 +235,7 @@ var current_page_input = undefined;     // вкладка страницы, из
 
 // правый клик мыши - контекстное меню
 document.body.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
+    //event.preventDefault();
     if (event.target.classList.contains('tab-button') || event.target.classList.contains('tab-input')) {
         document.getElementById('context-menu').style = 'display: flex;top: '+event.y+'px;left: '+event.x+'px;';
         if (event.target.classList.contains('tab-button'))
