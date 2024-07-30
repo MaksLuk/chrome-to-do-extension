@@ -551,6 +551,11 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     margin-right: 23px;
 }
 
+#close-error img {
+    width: 14px;
+    height: 14px;
+}
+
 /* всплывающее окно удаления всех задач */
 #delete-all-modal {
     display: none;
