@@ -163,10 +163,6 @@ document.getElementById('save-task').addEventListener('click', async function() 
     const date = document.getElementById('dateInput').value;
     const time = document.getElementById('timeInput').value;
     const desc = document.getElementById('add-task-description').value;
-    var displaied_desc = desc;
-    if (desc.length > 100) {
-        displaied_desc = displaied_desc.substring(0, 100) + '...';
-    }
 
     clear_add_task_modal();
 
@@ -174,7 +170,18 @@ document.getElementById('save-task').addEventListener('click', async function() 
     for (let task of all_tasks) {
         if (task.querySelector('.text').textContent === old_name) {
             task.querySelector('.text').textContent = new_task_header;
-            task.querySelector('.description').textContent = displaied_desc; 
+			if (desc) {
+				task.querySelector('.description').classList.remove('no-more-info');
+				var displaied_desc = desc;
+				if (desc.length > 100) {
+					displaied_desc = displaied_desc.substring(0, 100) + '...';
+				}
+				task.querySelector('.description').textContent = displaied_desc; 
+			}
+			else {
+				task.querySelector('.description').classList.add('no-more-info');
+				task.querySelector('.description').textContent = class_elements_text['no-more-info'];
+			}
             task.querySelector('.date').textContent = date + ' ' + time;
             if (priority == '0') task.querySelector('.emoji').textContent = '➖';
             else if (priority == '1') task.querySelector('.emoji').textContent = '🟢';
@@ -291,6 +298,10 @@ function create_new_task_element(header, desc, date, time, priority, completed) 
         desc = desc.substring(0, 100) + '...';
     }
     description.textContent = desc;
+	if (!desc) {
+		description.classList.add('no-more-info');
+		description.textContent = class_elements_text['no-more-info'];
+	}
 
     const delete_button = document.createElement('div');
     delete_button.className = 'delete-task hide';
@@ -313,7 +324,8 @@ function create_new_task_element(header, desc, date, time, priority, completed) 
     new_task_container.addEventListener('mouseleave', task_mouse_leave);
     delete_button.addEventListener('click', delete_task);
     fake_checkbox.addEventListener('click', strike_checkbox);
-    header_element.addEventListener('click', show_modal_change_task)
+    header_element.addEventListener('click', show_modal_change_task_from_header);
+	description.addEventListener('click', show_modal_change_task_from_desc);
 
     return new_task_container;
 }

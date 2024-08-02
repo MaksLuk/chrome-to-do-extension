@@ -98,6 +98,11 @@ body {
     height: 15px;
 }
 
+#language-select {
+	border: 1px solid white;
+	border-radius: 4px;
+}
+
 #language-select-text {
     text-align: center;
     width: 105px;
@@ -189,6 +194,7 @@ body {
     font-style: normal;
     font-size: 12px;
     line-height: 15px;
+	cursor: pointer;
 }
 
 .first-button {
@@ -208,6 +214,7 @@ body {
     font-size: 12px;
     line-height: 15px;
     border-radius: 2px;
+	cursor: pointer;
 }
 
 /* контейнер для заголовков страниц */
@@ -234,7 +241,7 @@ body {
 }
 
 .selected {
-    border-bottom: 4px solid #93A4B9;
+    border-bottom: 7px solid #93A4B9;
 }
 
 .hide {
@@ -323,6 +330,7 @@ section::-webkit-scrollbar {
     line-height: 15px;
     color: #10172A;
     margin-right: auto;
+	cursor: pointer;
 }
 
 .checkbox {
@@ -549,6 +557,7 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     height: 14px;
     margin-top: 16px;
     margin-right: 23px;
+	cursor: pointer;
 }
 
 #close-error img {

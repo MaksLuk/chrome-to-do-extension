@@ -166,5 +166,11 @@
         "text": "Write name",
         "desc": "плейсхордер, появляющийся при добавлении нового листа",
         "type": "class-placeholder"
+    },
+    {
+        "id": "no-more-info",
+        "text": "No more information",
+        "desc": "текст на случай, если у задачи нет описания",
+        "type": "class"
     }
 ]

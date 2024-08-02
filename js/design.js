@@ -95,12 +95,14 @@ function go_to_page(data_id) {
     }
 }
 
+// наведение мыши на контейнер 
 function task_mouse_enter(event) {
     var element = event.target;
     var delete_button = element.getElementsByClassName('delete-task')[0];
     delete_button.classList.remove('hide');
-    element.style.backgroundColor = '#E0E8F1';
-    delete_button.style.backgroundColor = '#E0E8F1';
+    element.style.backgroundColor = '#F2F4F8';
+    delete_button.style.backgroundColor = '#F2F4F8';
+	element.style.borderBottom = '1px solid #F2F4F8';
 }
 
 function task_mouse_leave(event) {
@@ -109,6 +111,7 @@ function task_mouse_leave(event) {
     delete_button.classList.add('hide');
     element.style.backgroundColor = 'white';
     delete_button.style.backgroundColor = 'white';
+	element.style.borderBottom = '1px solid #E0E8F1';
 }
 
 // открытие модального окна добавления задачи
@@ -120,16 +123,26 @@ document.getElementById('add-task').onclick = function() {
 };
 
 // открытие модального окна задачи (изменение + просмотр)
-async function show_modal_change_task(event) {
-    var task_header = event.target.textContent;
+async function show_modal_change_task_from_header(event) {
+	var task_header = event.target.textContent;
+	await show_modal_change_task(task_header);
+}
+
+async function show_modal_change_task_from_desc(event) {
+	var task_container = event.target.parentElement.parentElement;
+	var task_header = task_container.querySelector('.text').textContent;
+	await show_modal_change_task(task_header);
+}
+
+async function show_modal_change_task(task_header) {
     var task_data = await get_task_data_from_storage(current_tab_id, task_header);
     if (task_data === false) {
         document.getElementById('error-modal').style.display = 'flex';
         document.getElementById('tasklist-already-exists').style.display = 'none';
-            document.getElementById('unknown-error').style.display = 'block';
-            document.getElementById('did-not-specify-task-name').style.display = 'none';
-            document.getElementById('task-already-exists').style.display = 'none';
-            document.getElementById('no-one-list').style.display = 'none';
+        document.getElementById('unknown-error').style.display = 'block';
+        document.getElementById('did-not-specify-task-name').style.display = 'none';
+        document.getElementById('task-already-exists').style.display = 'none';
+        document.getElementById('no-one-list').style.display = 'none';
         return;
     }
     document.getElementById('add-task-modal').style.display = 'block';
@@ -153,6 +166,17 @@ async function show_modal_change_task(event) {
     document.getElementById('add-task-description').value = task_data['desc'];
     resize_priority_select();
 }
+
+// навели и убрали мышь с селекта языков
+language_select.addEventListener('mouseenter', () => {
+	language_select.style.backgroundColor = '#F2F4F8';
+	language_select.style.borderColor = '#E0E8F1';
+});
+
+language_select.addEventListener('mouseleave', () => {
+	language_select.style.backgroundColor = 'white';
+	language_select.style.borderColor = 'white';
+});
 
 window.onclick = function(event) {
     document.getElementById('context-menu').style.display = 'none';
