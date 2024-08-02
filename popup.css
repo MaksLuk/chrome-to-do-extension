@@ -17,6 +17,10 @@ body {
     margin: 0px;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -166,7 +170,9 @@ body {
     align-items: center;
 }
 
-.select-button:hover {
+.select-button:hover,
+#rename-list:hover,
+#delete-list:hover {
     background-color: #F2F4F8;
 }
 
@@ -417,7 +423,7 @@ section::-webkit-scrollbar {
     padding-right: 0px;
 }
 
-.delete-task:hover {/*////////////////////////////////////////////////*/
+.delete-task:hover {
 	color: #801F1E;
 }
 
@@ -438,6 +444,10 @@ section::-webkit-scrollbar {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+#add-task-modal::-webkit-scrollbar {
+    display: none;
+}
+
 #add-task-modal-content {
     background-color: #F8FAFC;
     padding: 24px 24px 16px 24px;
@@ -445,7 +455,8 @@ section::-webkit-scrollbar {
     width: 432px;
     height: 500px;
     position: absolute;
-    bottom: 0;
+	bottom: -432px;
+	transition: bottom 0.2s ease;
 }
 
 #dateInput {
@@ -624,7 +635,7 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     border: none;
     width: auto;
     height: 23px;
-    margin-left: 4px;
-    margin-right: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
     text-align: left;
 }

@@ -117,6 +117,9 @@ function task_mouse_leave(event) {
 // открытие модального окна добавления задачи
 document.getElementById('add-task').onclick = function() {
     document.getElementById('add-task-modal').style.display = 'block';
+	setTimeout(() => {
+        document.getElementById('add-task-modal-content').style.bottom = '0px';
+    }, 10);
     document.getElementById('add-task-header').focus();
     document.getElementById('save-task').style.display = 'none';
     document.getElementById('create-task').style.display = 'block';
@@ -146,6 +149,9 @@ async function show_modal_change_task(task_header) {
         return;
     }
     document.getElementById('add-task-modal').style.display = 'block';
+	setTimeout(() => {
+        document.getElementById('add-task-modal-content').style.bottom = '0px';
+    }, 10);
     document.getElementById('add-task-header').focus();
     document.getElementById('save-task').style.display = 'block';
     document.getElementById('create-task').style.display = 'none';
@@ -278,7 +284,10 @@ function resize_priority_select() {
 }
 
 function clear_add_task_modal() {
-    document.getElementById('add-task-modal').style.display = 'none';
+	document.getElementById('add-task-modal-content').style.bottom = '-432px';
+	setTimeout(() => {
+        document.getElementById('add-task-modal').style.display = 'none';
+    }, 200);
     document.getElementById('dateInput').value = '';
     document.getElementById('timeInput').value = '';
     document.getElementById('priority-select').setAttribute('data-value', '0');
