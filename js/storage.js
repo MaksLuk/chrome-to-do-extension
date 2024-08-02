@@ -1,5 +1,9 @@
 async function get_data() {
     let data = await chrome.storage.local.get(['data']).then((result) => { return result.data; });
+	if (data === undefined) {
+		data = [{id: 1, name: 'New List', tasks: []}];
+		await set_data(data);
+	}
     return data;
 }
 
