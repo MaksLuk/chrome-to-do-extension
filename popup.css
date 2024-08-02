@@ -69,7 +69,6 @@ body {
     align-items: center;
     cursor: pointer;
     border: none;
-    width: 105px;
     height: 24px;
     border-radius: 4px;
     background-color: white;
@@ -105,7 +104,6 @@ body {
 
 #language-select-text {
     text-align: center;
-    width: 105px;
     display: flex;
     align-items: center;
 }
@@ -117,7 +115,7 @@ body {
 }
 
 .arrow {
-    margin-left: auto;
+    margin-left: 8px;
     transition: transform 0.3s;
     transform: rotate(180deg);
 }
@@ -172,7 +170,6 @@ body {
     background-color: #F2F4F8;
 }
 
-
 .main {
     width: (480-24-24)px;
     height: 462px;
@@ -197,6 +194,10 @@ body {
 	cursor: pointer;
 }
 
+.white-button:hover {
+	color: #122F82;
+}
+
 .first-button {
     margin-left: auto;
 }
@@ -215,6 +216,10 @@ body {
     line-height: 15px;
     border-radius: 2px;
 	cursor: pointer;
+}
+
+.blue-button:hover {
+	background-color: #122F82;
 }
 
 /* контейнер для заголовков страниц */
@@ -412,6 +417,10 @@ section::-webkit-scrollbar {
     padding-right: 0px;
 }
 
+.delete-task:hover {/*////////////////////////////////////////////////*/
+	color: #801F1E;
+}
+
 .strikethrough {
     text-decoration: line-through;
 }
@@ -530,7 +539,7 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     position: absolute;
     width: 433px;
     height: 49px;
-    top: 484px;
+    bottom: 68px;
     left: 23.5px;
     z-index: 2;
     border: 1px solid #DD2726;
@@ -571,7 +580,7 @@ input[type="date"]:in-range::-webkit-datetime-edit-day-field {
     position: absolute;
     width: 456px;
     height: 90px;
-    top: 443px;
+    bottom: 68px;
     left: 12px;
     z-index: 2;
     border: 1px solid #E0E8F1;
