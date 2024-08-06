@@ -162,11 +162,11 @@ async function show_modal_change_task(task_header) {
     if (task_data['priority'] == '0') 
         document.querySelector('#priority-select-text').textContent = document.querySelector('#header-option').textContent;
     else if (task_data['priority'] == '1') 
-        document.querySelector('#priority-select-text').textContent = document.querySelector('#high-prority-option').textContent;
+        document.querySelector('#priority-select-text').textContent = document.querySelector('#low-prority-option').textContent;
     else if (task_data['priority'] == '2') 
         document.querySelector('#priority-select-text').textContent = document.querySelector('#medium-prority-option').textContent;
     else if (task_data['priority'] == '3') 
-        document.querySelector('#priority-select-text').textContent = document.querySelector('#low-prority-option').textContent;
+        document.querySelector('#priority-select-text').textContent = document.querySelector('#high-prority-option').textContent;
     document.getElementById('add-task-header').value = task_data['header'];
     document.getElementById('add-task-header').setAttribute('data-text', task_data['header']);
     document.getElementById('add-task-description').value = task_data['desc'];
