@@ -103,6 +103,7 @@ function task_mouse_enter(event) {
     element.style.backgroundColor = '#F2F4F8';
     delete_button.style.backgroundColor = '#F2F4F8';
 	element.style.borderBottom = '1px solid #F2F4F8';
+	element.style.borderRadius = '8px';
 }
 
 function task_mouse_leave(event) {
@@ -112,6 +113,7 @@ function task_mouse_leave(event) {
     element.style.backgroundColor = 'white';
     delete_button.style.backgroundColor = 'white';
 	element.style.borderBottom = '1px solid #E0E8F1';
+	element.style.borderRadius = '0px';
 }
 
 // открытие модального окна добавления задачи
@@ -329,7 +331,7 @@ var current_page_input = undefined;     // вкладка страницы, из
 
 // правый клик мыши - контекстное меню
 document.body.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
+    //event.preventDefault();
     if (event.target.classList.contains('tab-button') || event.target.classList.contains('tab-input')) {
         document.getElementById('context-menu').style = 'display: flex;top: '+event.y+'px;left: '+event.x+'px;';
         if (event.target.classList.contains('tab-button'))
